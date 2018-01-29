@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/content_linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -18,22 +18,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/ownerName_header_textView"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/TextFont"
-            android:text="Name"
-            tools:layout_editor_absoluteX="95dp"
-            tools:layout_editor_absoluteY="16dp"/>
+            app:srcCompat="@mipmap/ic_launcher_round"/>
 
         <TextView
             android:id="@+id/content_header_textView"
+            style="@style/TextFont"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="9"
-            style="@style/TextFont"
             android:gravity="left|center"
             android:paddingLeft="8dp"
             android:text="What's on your mind?"
@@ -44,9 +41,10 @@
     <LinearLayout
         android:id="@+id/button_linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +57,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Live"
+            android:clickable="true"
             tools:layout_editor_absoluteX="192dp"
             tools:layout_editor_absoluteY="57dp"/>
 
@@ -69,6 +68,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Photo"
+            android:clickable="true"
             tools:layout_editor_absoluteX="102dp"
             tools:layout_editor_absoluteY="57dp"/>
 
@@ -79,6 +79,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Check In"
+            android:clickable="true"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="57dp"/>
     </LinearLayout>

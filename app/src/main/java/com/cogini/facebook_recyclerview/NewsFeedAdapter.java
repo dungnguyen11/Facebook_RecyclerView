@@ -1,9 +1,11 @@
 package com.cogini.facebook_recyclerview;
 
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cogini.facebook_recyclerview.Model.NewsFeedFooter;
@@ -27,46 +29,57 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     //Properties
     ArrayList<Object> mNewsFeedObjects = new ArrayList<>();
 
+
+    public NewsFeedAdapter(ArrayList<Object> objects) {
+        mNewsFeedObjects = objects;
+    }
+
     //Header ViewHolder
     public static class NewsFeedHeaderHolder extends ViewHolder {
-        private NewsFeedHeader mHeader;
-        private TextView mOwnerName;
-        private TextView mContent;
-
         public NewsFeedHeaderHolder(View itemView) {
             super(itemView);
-            mOwnerName = itemView.findViewById(R.id.ownerName_header_textView);
-            mContent = itemView.findViewById(R.id.content_header_textView);
-        }
-
-        public void bind(NewsFeedHeader header) {
-
         }
     }
 
     //Post ViewHolder
     public static class NewsFeedPostHolder extends ViewHolder {
+        //Properties
         private NewsFeedPost mPost;
+
+        //View
+        private TextView mOwnerName;
+        private TextView mDate;
+        private TextView mContent;
+        private ImageView mPhoto;
+        private TextView mLike;
+        private TextView mComment;
+        private TextView mShare;
 
         public NewsFeedPostHolder(View itemView) {
             super(itemView);
+            mOwnerName = itemView.findViewById(R.id.ownerName_post_textView4);
+            mDate = itemView.findViewById(R.id.date_post_textView);
+            mContent = itemView.findViewById(R.id.content_post_textView);
+            mPhoto = itemView.findViewById(R.id.owner_photo_post_imageView);
+            mLike = itemView.findViewById(R.id.like_post_textView);
+            mComment = itemView.findViewById(R.id.comment_post_textView);
+            mShare = itemView.findViewById(R.id.share_post_textView);
         }
 
         public void bind(NewsFeedPost post) {
+            mPost = post;
+            mOwnerName.setText(mPost.getOwnerName());
+            mDate.setText(mPost.getDate());
+            mContent.setText(mPost.getContent());
+
 
         }
     }
 
     //Footer ViewHolder
     public static class NewsFeedFooterHolder extends ViewHolder {
-        private NewsFeedFooter mFooter;
-
         public NewsFeedFooterHolder(View itemView) {
             super(itemView);
-        }
-
-        public void bind(NewsFeedFooter footer) {
-
         }
     }
 
@@ -78,17 +91,24 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         switch (viewType) {
             case HEADER_TYPE:
-                View headerView = new View(null);
+                View headerView = LayoutInflater
+                        .from(parent.getContext())
+                        .inflate(R.layout.news_feed_header, parent, false);
+
                 viewHolder = new NewsFeedHeaderHolder(headerView);
                 break;
 
             case POST_TYPE:
-                View postView = new View(null);
+                View postView = LayoutInflater
+                        .from(parent.getContext())
+                        .inflate(R.layout.news_feed_post, parent, false);
                 viewHolder = new NewsFeedPostHolder(postView);
                 break;
 
             case FOOTER_TYPE:
-                View footerView = new View(null);
+                View footerView = LayoutInflater
+                        .from(parent.getContext())
+                        .inflate(R.layout.news_feed_footer, parent, false);
                 viewHolder = new NewsFeedFooterHolder(footerView);
                 break;
         }
@@ -102,18 +122,14 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         switch (itemType) {
             case HEADER_TYPE:
-                NewsFeedHeader header = new NewsFeedHeader();
-                ((NewsFeedHeaderHolder) holder).bind(header);
                 break;
 
             case POST_TYPE:
-                NewsFeedPost post = new NewsFeedPost();
+                NewsFeedPost post = (NewsFeedPost) mNewsFeedObjects.get(position);
                 ((NewsFeedPostHolder) holder).bind(post);
                 break;
 
             case FOOTER_TYPE:
-                NewsFeedFooter footer = new NewsFeedFooter();
-                ((NewsFeedFooterHolder) holder).bind(footer);
                 break;
         }
 

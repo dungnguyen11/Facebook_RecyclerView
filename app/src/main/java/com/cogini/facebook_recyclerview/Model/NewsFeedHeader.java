@@ -6,13 +6,19 @@ package com.cogini.facebook_recyclerview.Model;
 
 public class NewsFeedHeader {
     private String ownerName;
-    private String content;
 
     public NewsFeedHeader() {
     }
 
-    public NewsFeedHeader(String ownerName, String content) {
+    public NewsFeedHeader(String ownerName) {
         this.ownerName = ownerName;
-        this.content = content;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 }

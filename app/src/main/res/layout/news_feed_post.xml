@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/top_post_constraintLayout"
@@ -18,22 +18,26 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/photo_post_imageView"
+            android:id="@+id/owner_photo_post_imageView"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_marginTop="8dp"
             android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_launcher_round"/>
 
         <TextView
             android:id="@+id/ownerName_post_textView4"
+            style="@style/OwnerTextPost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="8dp"
-            style="@style/OwnerTextPost"
+            android:layout_marginTop="8dp"
             android:text="Owner Name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/photo_post_imageView"
+            app:layout_constraintStart_toEndOf="@+id/owner_photo_post_imageView"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
@@ -42,17 +46,16 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
             android:text="Date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/photo_post_imageView"
+            app:layout_constraintStart_toEndOf="@+id/owner_photo_post_imageView"
             app:layout_constraintTop_toBottomOf="@+id/ownerName_post_textView4"/>
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/body_post_constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="139dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -61,25 +64,25 @@
         app:layout_constraintTop_toBottomOf="@+id/top_post_constraintLayout">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/content_post_textView"
+            style="@style/ContentTextPost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="ContentPost"
-            style="@style/ContentTextPost"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/photo_post_imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/content_post_textView"
             app:srcCompat="@mipmap/ic_launcher"/>
     </android.support.constraint.ConstraintLayout>
 
@@ -98,27 +101,30 @@
         >
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/like_post_textView"
+            style="@style/TextFont"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/TextFont"
             android:text="Like"/>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/comment_post_textView"
+            style="@style/TextFont"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/TextFont"
             android:text="Comment"/>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/share_post_textView"
+            style="@style/TextFont"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/TextFont"
             android:text="Share"/>
     </LinearLayout>
 

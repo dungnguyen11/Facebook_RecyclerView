@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.widget.TextView;
 
 import com.cogini.facebook_recyclerview.Model.NewsFeedFooter;
 import com.cogini.facebook_recyclerview.Model.NewsFeedHeader;
@@ -29,9 +30,13 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     //Header ViewHolder
     public static class NewsFeedHeaderHolder extends ViewHolder {
         private NewsFeedHeader mHeader;
+        private TextView mOwnerName;
+        private TextView mContent;
 
         public NewsFeedHeaderHolder(View itemView) {
             super(itemView);
+            mOwnerName = itemView.findViewById(R.id.ownerName_header_textView);
+            mContent = itemView.findViewById(R.id.content_header_textView);
         }
 
         public void bind(NewsFeedHeader header) {

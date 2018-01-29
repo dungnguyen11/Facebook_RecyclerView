@@ -8,4 +8,31 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Header Font style-->
+    <style name="TextFont">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--Text style-->
+    <style name="TextCenter">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--Text of Owner Name Post-->
+    <style name="OwnerTextPost">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--Text of content post-->
+    <style name="ContentTextPost">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
 </resources>

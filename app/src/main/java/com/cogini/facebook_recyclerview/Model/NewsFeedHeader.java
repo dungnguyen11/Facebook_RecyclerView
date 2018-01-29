@@ -5,4 +5,14 @@ package com.cogini.facebook_recyclerview.Model;
  */
 
 public class NewsFeedHeader {
+    private String ownerName;
+    private String content;
+
+    public NewsFeedHeader() {
+    }
+
+    public NewsFeedHeader(String ownerName, String content) {
+        this.ownerName = ownerName;
+        this.content = content;
+    }
 }

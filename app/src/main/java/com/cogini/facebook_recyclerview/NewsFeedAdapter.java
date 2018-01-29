@@ -5,7 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 
+import com.cogini.facebook_recyclerview.Model.NewsFeedFooter;
 import com.cogini.facebook_recyclerview.Model.NewsFeedHeader;
+import com.cogini.facebook_recyclerview.Model.NewsFeedPost;
 
 import java.util.ArrayList;
 
@@ -31,19 +33,35 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public NewsFeedHeaderHolder(View itemView) {
             super(itemView);
         }
+
+        public void bind(NewsFeedHeader header) {
+
+        }
     }
 
     //Post ViewHolder
-    public static class NewsFeedHolder extends ViewHolder {
-        public NewsFeedHolder(View itemView) {
+    public static class NewsFeedPostHolder extends ViewHolder {
+        private NewsFeedPost mPost;
+
+        public NewsFeedPostHolder(View itemView) {
             super(itemView);
+        }
+
+        public void bind(NewsFeedPost post) {
+
         }
     }
 
     //Footer ViewHolder
     public static class NewsFeedFooterHolder extends ViewHolder {
+        private NewsFeedFooter mFooter;
+
         public NewsFeedFooterHolder(View itemView) {
             super(itemView);
+        }
+
+        public void bind(NewsFeedFooter footer) {
+
         }
     }
 
@@ -61,7 +79,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             case POST_TYPE:
                 View postView = new View(null);
-                viewHolder = new NewsFeedHolder(postView);
+                viewHolder = new NewsFeedPostHolder(postView);
                 break;
 
             case FOOTER_TYPE:
@@ -75,6 +93,41 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        final int itemType = getItemViewType(position);
+
+        switch (itemType) {
+            case HEADER_TYPE:
+                NewsFeedHeader header = new NewsFeedHeader();
+                ((NewsFeedHeaderHolder) holder).bind(header);
+                break;
+
+            case POST_TYPE:
+                NewsFeedPost post = new NewsFeedPost();
+                ((NewsFeedPostHolder) holder).bind(post);
+                break;
+
+            case FOOTER_TYPE:
+                NewsFeedFooter footer = new NewsFeedFooter();
+                ((NewsFeedFooterHolder) holder).bind(footer);
+                break;
+        }
+
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        Object item = mNewsFeedObjects.get(position);
+
+        if (item instanceof NewsFeedHeader) {
+            return HEADER_TYPE;
+        } else if (item instanceof NewsFeedPost) {
+            return POST_TYPE;
+        } else if (item instanceof NewsFeedFooter) {
+            return FOOTER_TYPE;
+        } else {
+            //return -1 to indicate that there are no fit type
+            return -1;
+        }
 
     }
 
